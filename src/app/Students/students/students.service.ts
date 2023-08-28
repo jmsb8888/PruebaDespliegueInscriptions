@@ -7,7 +7,7 @@ import {Observable } from 'rxjs';
 })
 export class StudentsService {
 
-  private baseUrl: string | null = 'http://www.distriinscriptions.somee.com/api/Students';
+  private baseUrl: string | null = 'https://www.distriinscriptions.somee.com/api/Students';
 
   constructor(private http: HttpClient) { }
 

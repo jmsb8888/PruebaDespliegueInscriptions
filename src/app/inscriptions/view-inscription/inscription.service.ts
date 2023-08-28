@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class InscriptionService {
-  private baseUrlInscriptionsGetAll: string | null = 'http://www.distriinscriptions.somee.com/api/Inscriptions';
+  private baseUrlInscriptionsGetAll: string | null = 'https://www.distriinscriptions.somee.com/api/Inscriptions';
 
   constructor(private http: HttpClient) {
   }

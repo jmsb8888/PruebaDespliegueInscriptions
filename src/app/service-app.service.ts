@@ -11,7 +11,7 @@ import {UserModel} from "./loging/UserModel";
   providedIn: 'root'
 })
 export class AppService {
-  readonly APIUrl = "http://www.distriinscriptions.somee.com/api";
+  readonly APIUrl = "https://www.distriinscriptions.somee.com/api";
 
   constructor(private http: HttpClient) {
   }

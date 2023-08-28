@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ShowSubjectsService {
 
-  private baseUrl: string | null = 'http://www.distriinscriptions.somee.com/api/Subjects';
+  private baseUrl: string | null = 'https://www.distriinscriptions.somee.com/api/Subjects';
 
   constructor(private http: HttpClient) { }
 
