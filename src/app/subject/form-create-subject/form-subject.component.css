@@ -1,0 +1,13 @@
+label[for]:after {
+    content: "*";
+    color: red;
+  }
+#title{
+  background-color: aliceblue;
+
+}
+@media (max-width: 100px) {
+  .form-check-label {
+    margin-right: 0.5rem;
+  }
+}

@@ -1,0 +1,66 @@
+<form novalidate autocomplete="off" #form="ngForm">
+    <input type="hidden" name="jeje" [value]="studentId"/>
+    <body>
+    <div>
+      <button class="mat-button" (click)="resetForm(form)" routerLink="/view-student" type="goBack" style="float: left;" ali
+              class="btn btn-primary mx-3">Volver
+      </button>
+    </div>
+
+    <div id="title" class="card bg-outline-primary">
+      <div class="card-header bg-outline-primary">
+        <h2 style="font-size: 2rem; margin-left: 1.9%">Detalles del Estudiante</h2>
+      </div>
+    </div>
+    <br>
+<div  class="bg-body p-1 mx-5">
+  <img src={{service.formDataStudent.studentPhoto}} style="width: 300px; height: 300px; margin-left: 50px;" >
+</div>
+
+      <div class="bg-body p-1 mx-5">
+        <div  class="form-group p-3 mx-5">
+          <h2>Nombres:
+
+        <label style="font-weight: normal">{{ service.formDataStudent.studentName }}</label></h2>
+
+        </div>
+
+        <div class="form-group p-3 mx-5">
+          <h2>Apellidos:
+          <label style="font-weight: normal">{{ service.formDataStudent.studentLn }}</label></h2>
+        </div>
+        <div class="form-group  p-3 mx-5">
+          <h2>Tipo de Documento:
+
+          <label style="font-weight: normal" *ngIf="service.formDataStudent.typeDocStudent === 'CC'">Cédula</label>
+          <label style="font-weight: normal" *ngIf="service.formDataStudent.typeDocStudent === 'PS'">Pasaporte</label>
+          <label style="font-weight: normal" *ngIf="service.formDataStudent.typeDocStudent === 'TI'">Tarjeta de Identidad</label></h2>
+        </div>
+        <div class="form-group p-3  mx-5">
+          <h2>Numero Documento:
+          <label style="font-weight: normal">{{ service.formDataStudent.studentDoc }}</label> </h2>
+        </div>
+        <div class="form-group p-3 mx-5">
+          <h2>Estado:
+          <label style="font-weight: normal" *ngIf="service.formDataStudent.studentStatus === 0">Matriculado</label>
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentStatus ===1">No Matriculado</label>
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentStatus ===2">Semestre Aplazado</label>
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentStatus ===3">Graduado</label></h2>
+        </div>
+
+
+        <div class="form-group p-3 col-5 p-3 mx-5">
+          <h2>Genero:
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentGenre === 'M'">Masculino</label>
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentGenre === 'F'">Femenino</label>
+          <label style="font-weight: normal"*ngIf="service.formDataStudent.studentGenre === 'O'">Otro</label></h2>
+        </div>
+
+
+      </div>
+
+    </body>
+  </form>
+
+
+

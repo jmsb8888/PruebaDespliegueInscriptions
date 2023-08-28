@@ -1,0 +1,39 @@
+label[for]:after {
+    content: "*";
+    color: red;
+  }
+
+  @media (max-width: 100px) {
+    .form-check-label {
+      margin-right: 0.5rem;
+    }
+  }
+
+.preview-image {
+  max-width: 100px;
+  max-height: 100px;
+}
+.drop-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed gray;
+  padding: 20px;
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+}
+#title{
+  background-color: aliceblue;
+}

@@ -1,0 +1,118 @@
+<div id="title" class="card bg-outline-primary" >
+  <div class="card-header  bg-outline-primary">
+    <h2 style="font-size: 2rem; margin-left: 0%"> Estudiantes Existentes</h2>
+  </div>
+</div>
+<body>
+<br>
+<div>
+  <div class="input-group col-md-4">
+    <input autocomplete="off" class="form-control py-2" type="search" value="" placeholder="Buscar Nombre:" id="example-search-input" #myInput>
+    <span class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="filterByName(myInput.value)">
+          <i>Buscar</i>
+        </button>
+      </span>
+  </div>
+  <br />
+  <div class="table-responsive">
+    <hr />
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="table table-bordered header-table" >
+      <tr>
+        <th class="text-left">
+          <div class="d-flex justify-content-between" style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionId('studentId')">
+              <mat-icon>{{iconId}}</mat-icon>
+              <strong style="font-size: 16px">Id</strong>
+            </button>
+          </div>
+        </th>
+        <!--<th scope="col">Nombre</th>-->
+        <th class="text-left">
+          <div class="d-flex justify-content-between"style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionName('studentName')">
+              <mat-icon>{{iconName}}</mat-icon>
+              <strong class="thead-pers" style="font-size: 16px">Nombre</strong>
+            </button>
+          </div>
+        </th>
+        <th class="text-left">
+          <div class="d-flex justify-content-between" style="font-size: 1.5rem">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionLn('studentLn')">
+              <mat-icon>{{iconLn}}</mat-icon>
+              <strong style="font-size: 16px">Apellido</strong>
+            </button>
+          </div>
+        </th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Tipo de documento</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Documento del identidad</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Estado del estudiante</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Genero</th>
+        <th scope="col" class="col-md text-center" style="vertical-align: middle">Foto</th>
+        <th scope="col" class="col-md text-center" style="vertical-align : middle">Editar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of array">
+        <td>{{item.studentId}}</td>
+        <td>{{item.studentName}}</td>
+        <td>{{item.studentLn}}</td>
+        <td>{{item.typeDocStudent}}</td>
+        <td>{{item.studentDoc}}</td>
+        <td>
+          <p *ngIf="item.studentStatus === 0">
+            Matriculado
+          </p>
+          <p *ngIf="item.studentStatus === 1">
+            No matriculado
+          </p>
+          <p *ngIf="item.studentStatus === 2">
+            Semestre aplazado
+          </p>
+          <p *ngIf="item.studentStatus === 3">
+            Graduado
+          </p>
+          <ng-template #inactive>
+            Inactivo
+          </ng-template>
+        </td>
+        <td>
+          <p *ngIf="item.studentGenre == 'M'">
+            Masculino
+          </p>
+          <p *ngIf="item.studentGenre == 'F'">
+            Femenino
+          </p>
+          <p *ngIf="item.studentGenre == 'O'">
+            Otro
+          </p>
+        </td>
+
+        <td>
+          <div style="text-align:center">
+          <img  src={{item.studentPhoto}} [ngStyle]="{'max-width': imgWidth}" class="cursor-pointer"   (click)="populateForm(item)" [routerLink]="['/details-student', item.studentId]">
+          </div>
+        </td>
+        <td class="col-md text-center" style="vertical-align: middle">
+          <button  (click)="populateForm(item)" [routerLink]="['../edit-student/', item.studentId]" type="submit" class="btn btn-primary">Editar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><input class="page-link" type="button" value="Anterior" (click)="getBackPage()" /> </li>
+        <li class="page-item"><input class="page-link" type="button" value={{backPage}} (click)="getPageButtons(1)" /></li>
+        <li class="page-item"><input class="page-link" type="button" value={{currentPage}} /></li>
+        <li class="page-item"><input class="page-link" type="button" value={{netxPage}} (click)="getPageButtons(0)" /></li>
+        <li class="page-item"><input class="page-link" type="button" value="Siguiente" (click)="getNextPage()" /></li>
+      </ul>
+      <p>Registros Totales:<strong> {{tamanio}}</strong></p>
+    </nav>
+  </div>
+</div>
+<script src="https://kit.fontawesome.com/3ec369e78b.js" crossorigin="anonymous"></script>
+</body>
+
+

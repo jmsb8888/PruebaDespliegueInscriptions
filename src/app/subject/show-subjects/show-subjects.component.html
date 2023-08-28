@@ -1,0 +1,68 @@
+<div class="card bg-outline-primary">
+  <div class="card-header  bg-outline-primary">
+    <h2 style="font-size: 2rem; margin-left: 0%;"> Materias Existentes</h2>
+  </div>
+</div>
+<body>
+<br>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table table-bordered header-table">
+  <tr>
+    <th scope="col"><div class="d-flex justify-content-between">
+      <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionId('id')">
+        <mat-icon>{{iconId}}</mat-icon>
+        <strong style="font-size: 16px">Id</strong>
+      </button>
+    </div></th>
+    <th class="text-left">
+      <div class="d-flex justify-content-between">
+        <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionName('name')">
+          <mat-icon>{{iconName}}</mat-icon>
+          <strong style="font-size: 16px">Nombre</strong>
+        </button>
+      </div>
+    </th>
+    <th class="text-left">
+      <div class="d-flex justify-content-between">
+        <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente" (click)="myFunctionLn('capacity')">
+          <mat-icon>{{iconLn}}</mat-icon>
+          <strong style="font-size: 16px">Capacidad</strong>
+        </button>
+      </div>
+    </th>
+    <th scope="col"  class="col-md text-center" style="vertical-align: middle">Estado de la materia</th>
+    <th scope="col"  class="col-md text-center" style="vertical-align: middle">Editar</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of array">
+    <td>{{item.subjectId}}</td>
+    <td>{{item.subjectName}}</td>
+    <td>{{item.subjectCapacity}}</td>
+
+    <td>
+      <p *ngIf="item.subjectStatus == 0">
+        Inactiva
+      </p>
+      <p *ngIf="item.subjectStatus == 1">
+        Activa
+      </p>
+    </td>
+    <td class="col-md text-center">
+      <button  (click)="populateForm(item)" [routerLink]="['../edit-subject', item.subjectId]" type="submit" class="btn btn-primary mx-3">Editar</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><input class="page-link" type="button" value="Anterior" (click)="getBackPage()" /> </li>
+    <li class="page-item"><input class="page-link" type="button" value={{backPage}} (click)="getPageButtons(1)" /></li>
+    <li class="page-item"><input class="page-link" type="button" value={{currentPage}} /></li>
+    <li class="page-item"><input class="page-link" type="button" value={{netxPage}} (click)="getPageButtons(0)" /></li>
+    <li class="page-item"><input class="page-link" type="button" value="Siguiente" (click)="getNextPage()" /></li>
+  </ul>
+  <p>Total de asignaturas:<strong> {{tamanio}}</strong></p>
+</nav>
+</body>

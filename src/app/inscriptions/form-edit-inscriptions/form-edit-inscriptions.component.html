@@ -1,0 +1,42 @@
+<form novalidate autocomplete="off" #form="ngForm" >
+  <body>
+  <input type="hidden" name="IncriptionId" [value]="IncriptionId"/>
+  <div id="title" class="card bg-outline-primary mx-5">
+    <div class="card-header  bg-outline-primary">
+      <h2 style="font-size: 2rem; margin-left: 1.9%">Modificar Inscripción</h2>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="bg-body  p-1 mx-5">
+      <div class="form-group col-5 p-3">
+        <label for="StudentId">Código del Estudiante</label>
+        <input class="form-control" id="StudentId" placeholder="Nombre materia"
+               name="codeStudent" #codeStudent="ngModel" [(ngModel)]="service.formDataInscriptionPost.StudentId"
+               [class.invalid]="codeStudent.invalid && codeStudent.touched"
+               type="text" required data-error="Por favor, ingrese el codigo">
+      </div>
+      <div class="form-group p-3 col-5">
+        <label for="StudentId">Nombre Materia</label>
+        <select class="form-select" name="SubjectName" #nameSubject="ngModel" [(ngModel)]="service.formDataInscriptionPost.SubjectName"
+                [class.invalid]="nameSubject.invalid && nameSubject.touched" required data-error="Por favor, Seleccione una Materia">
+          <option id="subjectsName" *ngFor="let item of inspectionList" [value]="item.subjectName">{{ item.subjectName }}</option>
+        </select>
+      </div>
+      <div>
+        <button class="mat-button" (click)="resetForm(form)" type="goBack" style="float: left;" ali
+                class="btn btn-primary mx-3">Volver
+        </button>
+      </div>
+      <div>
+        <button  class="mat-button" [disabled]="form.invalid"  (click)="editIsncription(form)" class="btn btn-primary mx-3" style="float: right;">Modificar Inscripción</button>
+      </div>
+    </div>
+  </div>
+  <!--</body>
+  </html>-->
+  <br>
+  <br>
+
+  </body>
+</form>

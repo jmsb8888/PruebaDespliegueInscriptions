@@ -1,0 +1,9 @@
+@media (max-width: 100px) {
+    .form-check-label {
+      margin-right: 0.5rem;
+    }
+  }
+#title{
+  background-color: aliceblue;
+
+}

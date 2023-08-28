@@ -1,0 +1,48 @@
+<div class="text-center mb-4 my-4">
+  <h1>Bienvenido</h1>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card shadow-lg">
+        <div class="card-header">
+          <img src="https://img.freepik.com/vector-gratis/ilustracion-concepto-tomar-notas_114360-1114.jpg?w=740&t=st=1682827330~exp=1682827930~hmac=677fca9ecb62761e914a7a9c5620130bbbcafa2fbf14a8ea054f66a723131303" alt="Logo" class="img-fluid mx-auto d-block mb-3" width="200">
+          <h4 class="text-center mb-0">Iniciar sesión</h4>
+        </div>
+        <div class="card-body">
+          <form novalidate autocomplete="off" #form="ngForm" (submit)="putUser(form)" >
+            <div class="form-group">
+              <label >Usuario</label>
+              <input name="nameUser" #User="ngModel" [(ngModel)]="service.formDataUser.user" [(ngModel)]="inputValue" (input)="updateInputValue()"
+                     [class.invalid]="User.invalid && User.touched"
+                type="user" class="form-control" id="user" placeholder="Ingresa tu usuario">
+            </div>
+            <div class="form-group">
+              <label for="password">Contraseña</label>
+              <input name="pasword" #UserPasword="ngModel" [(ngModel)]="service.formDataUser.pasword"
+                     [class.invalid]="UserPasword.invalid && UserPasword.touched"
+                type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña">
+            </div>
+            <!--<div>
+              <label>
+                <input type="checkbox" [(ngModel)]="remember" name = "remember">
+                Recordar
+              </label>
+            </div>-->
+            <div class="form-group text-center">
+              <button class="btn btn-primary mx-3 mat-button" type="submit" [disabled]="form.invalid" value="submit"
+                      >
+                Iniciar sesión
+              </button>
+            </div>
+
+          </form>
+        </div>
+        <div class="card-footer">
+<!--          <p class="text-center mb-0">¿No tienes una cuenta? <a href="">Regístrate aquí</a></p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

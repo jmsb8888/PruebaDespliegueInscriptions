@@ -1,0 +1,38 @@
+.custom-buttonIns {
+  font-size: 1.5rem;
+  background: deepskyblue;
+  color: white;
+}
+.header-table{
+  vertical-align: middle;
+  horiz-align: center;
+}
+.thead-pers{
+  vertical-align: middle;
+  text-align: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.totalRegisters{
+  font-size: 1rem;
+}
+@media (max-width: 100px) {
+  .form-check-label {
+    margin-right: 0.5rem;
+  }
+}
+
+#title{
+  background-color: aliceblue;
+}
+.botton-th {
+  position: relative;
+  display: grid;
+  align-content: space-evenly;
+}
+
+

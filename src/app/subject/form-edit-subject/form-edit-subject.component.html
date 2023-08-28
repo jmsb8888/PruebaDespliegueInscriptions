@@ -1,0 +1,55 @@
+<form novalidate autocomplete="off" #form="ngForm" >
+  <body>
+  <input type="hidden" name="subjectId" [value]="subjectId"/>
+  <div id="title" class="card bg-outline-primary mx-5">
+    <div class="card-header  bg-outline-primary">
+      <h2 style="font-size: 2rem; margin-left: 1.9%"> Modificar Materia</h2>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="bg-body p-1 mx-5">
+      <div class="form-group col-5 p-3">
+        <label for="nombreInput">Nombre</label>
+        <input  name="subjectName" #subjectName="ngModel" [(ngModel)]="service.formDataSubject.subjectName"
+                [class.invalid]="subjectName.invalid && subjectName.touched"
+                type="text" class="form-control" id="nombreInput" placeholder="Nombre materia" required>
+      </div>
+      <div class="form-group p-3 col-5">
+        <label for="cuposInput">Cupos</label>
+        <input class="form-control" placeholder="Cupos materia" id="cuposInput"
+               name="subjectCapacity" #subjectCapacity="ngModel" [(ngModel)]="service.formDataSubject.subjectCapacity"
+               [class.invalid]="subjectCapacity.invalid && subjectCapacity.touched"
+               type="text" required data-error="Por favor, ingrese el cupo de la materia">
+      </div>
+      <div class="form-group p-3">
+        <label for="cuposInput">Estado</label>
+      </div>
+      <div class="btn-group form-group p-3" data-toggle="buttons">
+        <label class="btn btn-outline-primary">
+          <input #subjectStatus="ngModel" [(ngModel)]="service.formDataSubject.subjectStatus"
+                 [class.invalid]="subjectStatus.invalid && subjectStatus.touched"
+                 type="radio" name="subjectStatusGroup" id="option1" autocomplete="off" required value=1> Activa
+        </label>
+        <label class="btn btn-outline-primary">
+          <input #subjectStatus="ngModel" [(ngModel)]="service.formDataSubject.subjectStatus"
+                 [class.invalid]="subjectStatus.invalid && subjectStatus.touched"
+                 type="radio" name="subjectStatusGroup" id="option2" autocomplete="off" required value=0> Inactiva
+        </label>
+      </div>
+
+      <div>
+        <button class="mat-button" (click)="resetForm(form)" style="float: left;" ali
+                class="btn btn-primary mx-3">Volver
+        </button>
+      </div>
+      <div>
+        <button class="mat-button" [disabled]="form.invalid" (click)="editSubject(form)" style="float: right;" ali
+                class="btn btn-primary mx-3">Editar Materia
+        </button>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  </body>
+</form>

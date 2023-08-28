@@ -1,0 +1,122 @@
+
+<form novalidate autocomplete="off" #form="ngForm" (submit)="addStudent(form)">
+  <input type="hidden" name="jeje" [value]="service.formDataStudent.studentId"/>
+  <body>
+  <div id="title" class="card bg-outline-primary mx-5">
+    <div class="card-header  bg-outline-primary">
+      <h2 style="font-size: 2rem; margin-left: 1.9%"> Agregar Estudiante</h2>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="bg-body p-1 mx-5">
+      <div class="form-group p-3 col-5 p-3">
+        <label for="nombreInput">Nombres</label>
+        <input class="form-control" placeholder="Nombres Estudiante"
+               name="studentName" #studentName="ngModel" [(ngModel)]="service.formDataStudent.studentName"
+               [class.invalid]="studentName.invalid && studentName.touched"
+               type="text" required data-error="Por favor, ingrese el nombre">
+      </div>
+      <div class="form-group p-3 col-5 p-3">
+        <label for="apellidosInput">Apellidos</label>
+        <input
+          name="studentLastName" #studentLastName="ngModel" [(ngModel)]="service.formDataStudent.studentLn"
+          [class.invalid]="studentLastName.invalid && studentLastName.touched"
+          type="text" class="form-control" id="apellidosInput" placeholder="Apellidos Estudiante" required
+          data-error="Por favor, ingrese los apellidos">
+      </div>
+      <div class="form-group col-5 p-3">
+        <label for="nombreInput">Tipo Documento</label>
+          <select class="form-select"
+                  name="studentTypeDoc" #studentTypeDoc="ngModel"
+                  type="select"
+                  [class.invalid]="studentTypeDoc.invalid && studentTypeDoc.touched"
+                  [(ngModel)]="service.formDataStudent.typeDocStudent" required>
+            <option value="CC" required>Cédula de Ciudadania</option>
+            <option value="PS" required>Pasaporte</option>
+            <option value="TI" required>Tarjeta de Identidad</option>
+          </select>
+      </div>
+      <div class="form-group p-3 col-5 p-3">
+        <label for="nombreInput">Numero Documento</label>
+        <input name="studentDoc" #studentDoc="ngModel" [(ngModel)]="service.formDataStudent.studentDoc"
+               [class.invalid]="studentDoc.invalid && studentDoc.touched"
+               type="text" class="form-control" id="nombreInput" placeholder="Numero de documento del estudiante"
+               required data-error="Por favor, ingrese el numero de documento">
+      </div>
+      <div class="form-group p-3 col-5 p-3">
+        <label>Estado</label>
+      </div>
+      <div class="btn-group form-group p-3" data-toggle="buttons"
+           [class.invalid]="studentStatus.invalid && studentStatus.touched">
+        <label class="btn btn-outline-primary">
+          <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
+                 value=0
+                 type="radio" name="options" id="statusInput" autocomplete="off" value=0 required> Matriculado
+        </label>
+        <label class="btn btn-outline-primary">
+          <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
+                 value=1
+                 type="radio" id="statusInput" autocomplete="off" value=1 required> No Matriculado
+        </label>
+        <label class="btn btn-outline-primary">
+          <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
+                 value=2
+                 type="radio" id="statusInput" autocomplete="off" value=2 required> Semestre Aplazado
+        </label>
+        <label class="btn btn-outline-primary">
+          <input name="studentStatus" #studentStatus="ngModel" [(ngModel)]="service.formDataStudent.studentStatus"
+                 value=3
+                 type="radio" id="statusInput" autocomplete="off" value=3 required> Graduado
+        </label>
+      </div>
+      <div class="form-group p-3 col-5 p-3">
+        <label ngFor="nombreInput">Género</label>
+      </div>
+      <div class="btn-group form-group p-3" data-toggle="buttons"
+           [class.invalid]="studentGenre.invalid && studentGenre.touched">
+        <label class="btn btn-outline-primary">
+          <input type="radio" #studentGenre="ngModel" name="genreInput"
+                 [(ngModel)]="service.formDataStudent.studentGenre" value="M" required>
+          Masculino
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="radio" #studentGenre="ngModel" name="genreInput"
+                 [(ngModel)]="service.formDataStudent.studentGenre" value="F" required>
+          Femenino
+        </label>
+        <label class="btn btn-outline-primary">
+          <input type="radio" #studentGenre="ngModel" name="genreInput"
+                 [(ngModel)]="service.formDataStudent.studentGenre" value="O" required>
+          Otro
+        </label>
+      </div>
+      <div class="container my-5">
+        <div class="card p-3">
+          <div class="drop-box border rounded p-5 text-center"
+               (dragover)="handleDragOver($event)"
+               (drop)="handleDrop($event)">
+            <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+            <p class="mb-0" *ngIf="!imageUrl">Drop image here or click to upload</p>
+            <div class="preview-container my-3" *ngIf="imageUrl">
+              <img style="height: 25rem;width: 25rem" [src]="sanitizer.bypassSecurityTrustUrl(imageUrl)" alt="Uploaded Image" class="preview-image rounded">
+            </div>
+            <a>{{imageUrl}}</a>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary" (click)="fileInput.click()">Select File</button>
+            <input type="file" #fileInput style="display:none" (change)="handleFileInput($event)">
+            <button class="btn btn-danger ml-3" [disabled]="!imageUrl" (click)="clearPreview()">Remove Image</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="mat-button" [disabled]="form.invalid" type="submit" value="submit" style="float: right;" ali
+                class="btn btn-primary mx-3">Crear Estudiante
+        </button>
+      </div>
+    </div>
+  </div>
+  <br>
+  </body>
+</form>

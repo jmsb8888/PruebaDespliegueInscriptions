@@ -1,0 +1,73 @@
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8" opened>
+    <img
+      class="avatar mat-elevation-z8"
+      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    />
+
+    <h4 class="name">{{ inputValue }}</h4>
+    <p class="designation">Usuario</p>
+    <button  mat-button class="menu-button" routerLink="/login"       (click)="closeLoginM()">
+
+      <mat-icon>exit_to_app</mat-icon>
+      <span>Cerrar Sesión</span>
+    </button>
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="welcome">
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </button>
+
+    <button mat-button class="menu-button" [matMenuTriggerFor]="homeMenu">
+      <mat-icon>face</mat-icon>
+      <span>Estudiantes</span>
+    </button>
+
+    <mat-menu #homeMenu="matMenu">
+      <button mat-menu-item routerLink="create-student">Agregar estudiantes</button>
+      <button mat-menu-item routerLink="view-student">Ver Estudiantes</button>
+    </mat-menu>
+
+    <button class="menu-button" mat-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>library_books</mat-icon>
+      <span>Materias</span>
+    </button>
+
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="create-subject">Agregar Materias</button>
+      <button mat-menu-item routerLink="view-subject">Ver Materias</button>
+    </mat-menu>
+
+    <button class="menu-button" mat-button [matMenuTriggerFor]="aboutMenu">
+      <mat-icon>edit</mat-icon>
+      <span>Inscripciones</span>
+    </button>
+
+
+
+    <mat-menu #aboutMenu="matMenu">
+      <button mat-menu-item routerLink="create-inscription">Inscribir materias</button>
+      <button mat-menu-item routerLink="view-inscription">Ver Inscripciones</button>
+    </mat-menu>
+
+
+    <mat-divider></mat-divider>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z4"><router-outlet></router-outlet></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

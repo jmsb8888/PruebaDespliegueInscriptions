@@ -1,0 +1,89 @@
+<div id="title" class="card bg-outline-primary mx-3">
+  <div class="card-header  bg-outline-primary">
+    <h2 style="font-size: 2rem; margin-left: 1.9%"> Inscripciones Existentes</h2>
+  </div>
+</div>
+<body>
+<div class="table-responsive" res>
+  <br/>
+  <div class="table-responsive">
+    <table id="myTable" class="table table-striped table-bordered table-hover table-responsive">
+      <thead class="table table-bordered">
+      <tr>
+        <th class="thead-left" scope="col" style="font-size: 1rem;">
+          <div class="d-flex justify-content-between">
+
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente"
+                    (click)="myFunctionId('InscriptionsId')">
+              <mat-icon>{{iconId}}</mat-icon>
+              <strong style="font-size: 1rem">Id</strong>
+            </button>
+          </div>
+        </th>
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente"
+                    (click)="myFunctionName('studentName')">
+              <mat-icon>{{iconName}}</mat-icon>
+              <strong style="font-size: 1rem">Nombre Estudiante</strong>
+            </button>
+          </div>
+        </th>
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente"
+                    (click)="myFunctionSub('subjectName')">
+              <mat-icon>{{iconSub}}</mat-icon>
+              <strong style="font-size: 1rem">Nombre Materia</strong>
+            </button>
+          </div>
+        </th>
+        <th class="text-left">
+          <div class="d-flex justify-content-between">
+            <button mat-button class="menu-button" title="Ordenar en orden alfabetico, asendente y decendentemente"
+                    (click)="myFunctionDate('dateInscription')">
+              <mat-icon>{{iconDate}}</mat-icon>
+              <strong style="font-size: 1rem">Fecha Inscripcion</strong>
+            </button>
+          </div>
+        </th>
+        <th scope="col" class="thead-pers">Editar</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr></tr>
+      <tr *ngFor="let item of array ">
+        <td style="font-size: 1rem;">{{item.incriptionId}}</td>
+        <td style="font-size: 1rem;">{{item.studentName}}</td>
+        <td style="font-size: 1rem;">{{item.subjectName}}</td>
+        <td style="font-size: 1rem;">{{item.incriptionDate}}</td>
+        <td class="col-md text-center">
+          <button (click)="populateForm(item)" [routerLink]="['../edit-inscriptions/', item.incriptionId]"  type="submit"
+                  class="btn btn-primary" style="vertical-align: middle;">Editar
+          </button>
+        </td>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><input class="page-link" type="button" value="Anterior" (click)="getBackPage()"/></li>
+      <li class="page-item"><input class="page-link" type="button" value={{backPage}} (click)="getPageButtons(1)"/></li>
+      <li class="page-item"><input class="page-link" type="button" value={{currentPage}}/></li>
+      <li class="page-item"><input class="page-link" type="button" value={{netxPage}} (click)="getPageButtons(0)"/></li>
+      <li class="page-item"><input class="page-link" type="button" value="Siguiente" (click)="getNextPage()"/></li>
+    </ul>
+    <p>Registros Totales:<strong> {{tamanio}}</strong></p>
+  </nav>
+  <button class="custom-buttonIns" (click)="exportTableToExcel()">
+    <mat-icon>save_alt</mat-icon>
+    <span>Exportar a excel</span>
+  </button>
+</div>
+</body>
+
+
+
